@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C2FCC86EF3D4C9DB52AC48C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29996EA6E58C47C6B9570CB3 /* libPods.a */; };
 		D156E24817CFA18B0015E0E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24717CFA18B0015E0E0 /* UIKit.framework */; };
 		D156E24A17CFA18B0015E0E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24917CFA18B0015E0E0 /* Foundation.framework */; };
 		D156E24C17CFA18B0015E0E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24B17CFA18B0015E0E0 /* CoreGraphics.framework */; };
@@ -21,6 +22,7 @@
 		D156E26817CFA18B0015E0E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24917CFA18B0015E0E0 /* Foundation.framework */; };
 		D156E27017CFA18B0015E0E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D156E26E17CFA18B0015E0E0 /* InfoPlist.strings */; };
 		D156E27317CFA18B0015E0E0 /* KaPlaPoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D156E27217CFA18B0015E0E0 /* KaPlaPoTests.m */; };
+		D1B626A917CFA82C00399DB1 /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B626A817CFA82C00399DB1 /* CCAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29996EA6E58C47C6B9570CB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D156E24417CFA18B0015E0E0 /* KaPlaPo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaPlaPo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D156E24717CFA18B0015E0E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D156E24917CFA18B0015E0E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +56,9 @@
 		D156E26F17CFA18B0015E0E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D156E27117CFA18B0015E0E0 /* KaPlaPoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaPlaPoTests.h; sourceTree = "<group>"; };
 		D156E27217CFA18B0015E0E0 /* KaPlaPoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KaPlaPoTests.m; sourceTree = "<group>"; };
+		D1B626A717CFA82C00399DB1 /* CCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAppDelegate.h; sourceTree = "<group>"; };
+		D1B626A817CFA82C00399DB1 /* CCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAppDelegate.m; sourceTree = "<group>"; };
+		F1E4740D91704F0EA7F6FFBB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 				D156E24817CFA18B0015E0E0 /* UIKit.framework in Frameworks */,
 				D156E24A17CFA18B0015E0E0 /* Foundation.framework in Frameworks */,
 				D156E24C17CFA18B0015E0E0 /* CoreGraphics.framework in Frameworks */,
+				6C2FCC86EF3D4C9DB52AC48C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,7 @@
 				D156E26B17CFA18B0015E0E0 /* KaPlaPoTests */,
 				D156E24617CFA18B0015E0E0 /* Frameworks */,
 				D156E24517CFA18B0015E0E0 /* Products */,
+				F1E4740D91704F0EA7F6FFBB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +113,7 @@
 				D156E24917CFA18B0015E0E0 /* Foundation.framework */,
 				D156E24B17CFA18B0015E0E0 /* CoreGraphics.framework */,
 				D156E26517CFA18B0015E0E0 /* SenTestingKit.framework */,
+				29996EA6E58C47C6B9570CB3 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,7 +121,10 @@
 		D156E24D17CFA18B0015E0E0 /* KaPlaPo */ = {
 			isa = PBXGroup;
 			children = (
+				D1B626AA17CFA90300399DB1 /* IntroLayer */,
 				D156E25617CFA18B0015E0E0 /* AppDelegate.h */,
+				D1B626A717CFA82C00399DB1 /* CCAppDelegate.h */,
+				D1B626A817CFA82C00399DB1 /* CCAppDelegate.m */,
 				D156E25717CFA18B0015E0E0 /* AppDelegate.m */,
 				D156E24E17CFA18B0015E0E0 /* Supporting Files */,
 			);
@@ -152,6 +164,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D1B626AA17CFA90300399DB1 /* IntroLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = IntroLayer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D156E27617CFA18B0015E0E0 /* Build configuration list for PBXNativeTarget "KaPlaPo" */;
 			buildPhases = (
+				DC898C0D724E4F44AA1B4568 /* Check Pods Manifest.lock */,
 				D156E24017CFA18B0015E0E0 /* Sources */,
 				D156E24117CFA18B0015E0E0 /* Frameworks */,
 				D156E24217CFA18B0015E0E0 /* Resources */,
+				ED0BC8742CA349CF999C1B7D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,6 +275,36 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		DC898C0D724E4F44AA1B4568 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED0BC8742CA349CF999C1B7D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -263,6 +314,7 @@
 			files = (
 				D156E25417CFA18B0015E0E0 /* main.m in Sources */,
 				D156E25817CFA18B0015E0E0 /* AppDelegate.m in Sources */,
+				D1B626A917CFA82C00399DB1 /* CCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +414,7 @@
 		};
 		D156E27717CFA18B0015E0E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1E4740D91704F0EA7F6FFBB /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KaPlaPo/KaPlaPo-Prefix.pch";
@@ -373,6 +426,7 @@
 		};
 		D156E27817CFA18B0015E0E0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1E4740D91704F0EA7F6FFBB /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KaPlaPo/KaPlaPo-Prefix.pch";
@@ -435,6 +489,7 @@
 				D156E27817CFA18B0015E0E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D156E27917CFA18B0015E0E0 /* Build configuration list for PBXNativeTarget "KaPlaPoTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +498,7 @@
 				D156E27B17CFA18B0015E0E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
