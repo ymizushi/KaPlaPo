@@ -23,6 +23,7 @@
 		D156E27017CFA18B0015E0E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D156E26E17CFA18B0015E0E0 /* InfoPlist.strings */; };
 		D156E27317CFA18B0015E0E0 /* KaPlaPoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D156E27217CFA18B0015E0E0 /* KaPlaPoTests.m */; };
 		D1B626A917CFA82C00399DB1 /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B626A817CFA82C00399DB1 /* CCAppDelegate.m */; };
+		D1B626AD17CFACC700399DB1 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B626AC17CFACC700399DB1 /* IntroLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		D156E27217CFA18B0015E0E0 /* KaPlaPoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KaPlaPoTests.m; sourceTree = "<group>"; };
 		D1B626A717CFA82C00399DB1 /* CCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAppDelegate.h; sourceTree = "<group>"; };
 		D1B626A817CFA82C00399DB1 /* CCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAppDelegate.m; sourceTree = "<group>"; };
+		D1B626AB17CFACC700399DB1 /* IntroLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
+		D1B626AC17CFACC700399DB1 /* IntroLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		F1E4740D91704F0EA7F6FFBB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -167,6 +170,8 @@
 		D1B626AA17CFA90300399DB1 /* IntroLayer */ = {
 			isa = PBXGroup;
 			children = (
+				D1B626AB17CFACC700399DB1 /* IntroLayer.h */,
+				D1B626AC17CFACC700399DB1 /* IntroLayer.m */,
 			);
 			name = IntroLayer;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				D156E25417CFA18B0015E0E0 /* main.m in Sources */,
 				D156E25817CFA18B0015E0E0 /* AppDelegate.m in Sources */,
 				D1B626A917CFA82C00399DB1 /* CCAppDelegate.m in Sources */,
+				D1B626AD17CFACC700399DB1 /* IntroLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

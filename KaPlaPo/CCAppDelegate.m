@@ -7,6 +7,7 @@
 //
 
 #import "CCAppDelegate.h"
+#import "IntroLayer.h"
 
 @interface CCAppDelegate ()
 
@@ -49,7 +50,7 @@
     
     [CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
     
-    //[self.director pushScene:[IntroLayer scene]];
+    [self.director pushScene:[IntroLayer scene]];
     
     self.rootViewController = [[UINavigationController alloc] initWithRootViewController:self.director];
     self.rootViewController.navigationBarHidden = YES;
