@@ -14,7 +14,6 @@
 @implementation PrimitiveLayer
 
 -(void) draw
-
 {
     glLineWidth(2.0f);
     CGPoint p1,p2;
