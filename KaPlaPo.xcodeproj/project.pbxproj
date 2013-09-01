@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6C2FCC86EF3D4C9DB52AC48C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29996EA6E58C47C6B9570CB3 /* libPods.a */; };
+		D148406917D31B990084062E /* omote_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D148406617D31B990084062E /* omote_blue.png */; };
+		D148406A17D31B990084062E /* omote_red.png in Resources */ = {isa = PBXBuildFile; fileRef = D148406717D31B990084062E /* omote_red.png */; };
+		D148406B17D31B990084062E /* ura.png in Resources */ = {isa = PBXBuildFile; fileRef = D148406817D31B990084062E /* ura.png */; };
 		D156E24817CFA18B0015E0E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24717CFA18B0015E0E0 /* UIKit.framework */; };
 		D156E24A17CFA18B0015E0E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24917CFA18B0015E0E0 /* Foundation.framework */; };
 		D156E24C17CFA18B0015E0E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D156E24B17CFA18B0015E0E0 /* CoreGraphics.framework */; };
@@ -38,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		29996EA6E58C47C6B9570CB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D148406617D31B990084062E /* omote_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = omote_blue.png; sourceTree = "<group>"; };
+		D148406717D31B990084062E /* omote_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = omote_red.png; sourceTree = "<group>"; };
+		D148406817D31B990084062E /* ura.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ura.png; sourceTree = "<group>"; };
 		D156E24417CFA18B0015E0E0 /* KaPlaPo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaPlaPo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D156E24717CFA18B0015E0E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D156E24917CFA18B0015E0E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -137,6 +143,9 @@
 		D156E24E17CFA18B0015E0E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D148406617D31B990084062E /* omote_blue.png */,
+				D148406717D31B990084062E /* omote_red.png */,
+				D148406817D31B990084062E /* ura.png */,
 				D156E24F17CFA18B0015E0E0 /* KaPlaPo-Info.plist */,
 				D156E25017CFA18B0015E0E0 /* InfoPlist.strings */,
 				D156E25317CFA18B0015E0E0 /* main.m */,
@@ -253,6 +262,9 @@
 				D156E25A17CFA18B0015E0E0 /* Default.png in Resources */,
 				D156E25C17CFA18B0015E0E0 /* Default@2x.png in Resources */,
 				D156E25E17CFA18B0015E0E0 /* Default-568h@2x.png in Resources */,
+				D148406917D31B990084062E /* omote_blue.png in Resources */,
+				D148406A17D31B990084062E /* omote_red.png in Resources */,
+				D148406B17D31B990084062E /* ura.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
