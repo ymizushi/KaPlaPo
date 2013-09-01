@@ -8,6 +8,8 @@
 
 #import "IntroLayer.h"
 
+#import "PrimitiveLayer.h"
+
 #pragma mark - IntroLayer
 @implementation IntroLayer
 @synthesize displaySprite;
@@ -22,6 +24,9 @@
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
+    
+    PrimitiveLayer *pLayer = [PrimitiveLayer node];
+    [scene addChild:pLayer];
 	
 	// return the scene
 	return scene;
@@ -75,6 +80,8 @@
         displaySprite.position = ccp(size.width/2, size.height/2);
         NSLog(@"size:%f width:%f", size.width, size.height);
         [self addChild:displaySprite];
+        [self drawControlPanel];
+        
 	}
 	return self;
 }
@@ -83,5 +90,19 @@
 - (void) onEnter {
 	[super onEnter];
 }
+
+- (void) drawControlPanel {
+    CCDrawNode *drawNode = [CCDrawNode node];
+    
+    CGPoint triangleVerts[] = {{-100,-100}, {100,-100}, {0, 100}};
+    ccColor4F red           = {1, 0, 0, 1};
+    ccColor4F green         = {0, 1, 0, 1};
+    
+    [drawNode drawPolyWithVerts:triangleVerts count:3 fillColor:red borderWidth:2 borderColor:green];
+    
+    drawNode.position = ccp(self.contentSize.width/2, self.contentSize.height/2);
+    [self addChild:drawNode];
+}
+
 
 @end
