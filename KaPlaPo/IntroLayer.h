@@ -8,8 +8,9 @@
 
 #import "cocos2d.h"
 
-@interface IntroLayer : CCLayer {
-}
+@interface IntroLayer : CCLayer {}
+@property(nonatomic, retain)CCSprite* displaySprite;
+@property(nonatomic)NSInteger touchCount;
 
 +(CCScene *) scene;
 
