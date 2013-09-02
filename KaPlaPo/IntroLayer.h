@@ -8,7 +8,6 @@
 
 #import "cocos2d.h"
 
-#define BLOCK_SIZE 30
 #define BS 30
 #define BEFORE_STATE 0
 #define READY_STATE 1

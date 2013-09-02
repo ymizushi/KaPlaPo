@@ -19,33 +19,57 @@
 @synthesize touchState;
 @synthesize selectedPanel;
 
-// Helper class method that creates a Scene with the TilesLayer as the only child.
+- (id) init {
+	if( (self=[super init])) {
+		CGSize size = [[CCDirector sharedDirector] winSize];
+		CCSprite *background;
+		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
+			background = [CCSprite spriteWithFile:@"Default.png"];
+		} else {
+			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
+		}
+		background.position = ccp(size.width/2, size.height/2);
+		[self addChild: background];
+
+        [CCDirector sharedDirector].displayStats = NO;
+        self.touchEnabled = YES;
+        
+        self.displaySprite = [CCSprite spriteWithFile:@"omote_blue.png"];
+        displaySprite.position = ccp(size.width/2, size.height/2);
+        [self addChild:displaySprite];
+        self.controlPanelNode = [CCDrawNode node];
+        [self initControlPanel];
+        
+	}
+	return self;
+}
+
+- (void) onEnter {
+	[super onEnter];
+}
+
 + (CCScene *) scene {
-	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
+    
 	IntroLayer *layer = [IntroLayer node];
-	
-	// add layer as a child to scene
 	[scene addChild: layer];
     
     PrimitiveLayer *pLayer = [PrimitiveLayer node];
     [scene addChild:pLayer];
-	
-	// return the scene
+    
 	return scene;
 }
 
+- (CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch =[touches anyObject];
+    CGPoint location =[touch locationInView:[touch view]];
+    return [[CCDirector sharedDirector] convertToGL:location];
+}
+
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
-    self.startTouchPoint = location;
-    int offX = location.x;
-    int offY = location.y;
-    [self nextStateX:offX Y:offY];
-    
+    self.startTouchPoint = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
     if(self.touchState == BEFORE_STATE) {
-        [self drawControlPanelX:offX Y:offY];
+        [self drawControlPanelX:self.startTouchPoint.x Y:self.startTouchPoint.y];
     }
 }
 
@@ -105,17 +129,15 @@
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"question.png"]];
             self.selectedPanel = PANEL_QUESTION;
         }
-        return;
     }
 }
 
-
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self drawControlPanelX:-200 Y:-200];
+    [self drawControlPanelX:-400 Y:-400];
     
     if(self.touchState == BEFORE_STATE) {
-        self.touchState = READY_STATE;
         [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"omote_red.png"]];
+        self.touchState = READY_STATE;
         return;
     }
     
@@ -156,61 +178,8 @@
     }
 }
 
-- (void)nextStateX:(NSInteger)offX Y:(NSInteger)offY{
-//    NSInteger restNum = self.touchCount%3;
-//    switch(restNum){
-//        case 0:
-//            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"omote_blue.png"]];
-//            break;
-//        case 1:
-//            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"omote_red.png"]];
-//            break;
-//        case 2:
-//            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"ura.png"]];
-//            break;
-//    }
-}
-
-- (CGPoint)getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch =[touches anyObject];
-    CGPoint location =[touch locationInView:[touch view]];
-    return [[CCDirector sharedDirector] convertToGL:location];
-}
-
-- (id) init {
-	if( (self=[super init])) {
-		CGSize size = [[CCDirector sharedDirector] winSize];
-		CCSprite *background;
-		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-			background = [CCSprite spriteWithFile:@"Default.png"];
-		} else {
-			background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
-		}
-		background.position = ccp(size.width/2, size.height/2);
-		[self addChild: background];
-
-        [CCDirector sharedDirector].displayStats = NO;
-        self.touchEnabled = YES;
-        
-        self.displaySprite = [CCSprite spriteWithFile:@"omote_blue.png"];
-        displaySprite.position = ccp(size.width/2, size.height/2);
-        NSLog(@"size:%f width:%f", size.width, size.height);
-        [self addChild:displaySprite];
-        self.controlPanelNode = [CCDrawNode node];
-        [self initControlPanel];
-        
-	}
-	return self;
-}
-
-
-- (void) onEnter {
-	[super onEnter];
-}
-
-
 - (void) initControlPanel {
-    CGPoint square[] = {{-30,-30}, {30,-30}, {30,30}, {-30, 30}};
+    CGPoint square[] = {{-BS,-BS}, {BS,-BS}, {BS,BS}, {-BS, BS}};
     ccColor4F green = {0, 1, 0, 1};
     
     [self.controlPanelNode drawPolyWithVerts:square count:4 fillColor:green borderWidth:2 borderColor:green];
@@ -218,23 +187,8 @@
     [self addChild:self.controlPanelNode];
 }
 
-- (void) initTargetPanel {
-    CGPoint square[] = {{-BLOCK_SIZE,-BLOCK_SIZE}, {BLOCK_SIZE,-BLOCK_SIZE}, {BLOCK_SIZE,BLOCK_SIZE}, {-BLOCK_SIZE, BLOCK_SIZE}};
-    ccColor4F green = {0, 1, 0, 1};
-    
-    [self.controlPanelNode drawPolyWithVerts:square count:4 fillColor:green borderWidth:2 borderColor:green];
-    
-    self.targetPanelNode.position = ccp(-200, -200);
-    [self addChild:self.targetPanelNode];
-}
-
 - (void) drawControlPanelX:(NSInteger)x Y:(NSInteger)y{
     self.controlPanelNode.position = ccp(x, y);
 }
-
-- (void) drawTargetPanelX:(NSInteger)x Y:(NSInteger)y{
-    self.targetPanelNode.position = ccp(x, y);
-}
-
 
 @end
