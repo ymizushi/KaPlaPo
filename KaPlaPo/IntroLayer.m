@@ -141,6 +141,7 @@
         return;
     }
     
+    displaySprite.rotation = 0;
     if(self.touchState == READY_STATE) {
         switch(self.selectedPanel) {
             case PANEL_HALF:
@@ -168,6 +169,7 @@
                 [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"question.png"]];
                 break;
         }
+        displaySprite.rotation = 180;
         self.touchState = AFTER_STATE;
         return;
     }
