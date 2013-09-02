@@ -16,6 +16,8 @@
 @synthesize controlPanelNode;
 @synthesize targetPanelNode;
 @synthesize startTouchPoint;
+@synthesize touchState;
+@synthesize selectedPanel;
 
 // Helper class method that creates a Scene with the TilesLayer as the only child.
 + (CCScene *) scene {
@@ -36,14 +38,15 @@
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    self.touchCount++;
     CGPoint location = [self getTouchEventPoint:(NSSet *)touches withEvent:(UIEvent *)event];
     self.startTouchPoint = location;
     int offX = location.x;
     int offY = location.y;
     [self nextStateX:offX Y:offY];
     
-    [self drawControlPanelX:offX Y:offY];
+    if(self.touchState == BEFORE_STATE) {
+        [self drawControlPanelX:offX Y:offY];
+    }
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -52,59 +55,105 @@
     int y = location.y;
     int sx = self.startTouchPoint.x;
     int sy = self.startTouchPoint.y;
-    // 1
-    if(sx-BS < x && x < sx+BS &&
-       sy+BS < y ) {
-        [self drawControlPanelX:sx Y:sy+2*BS];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"half.png"]];
-    }
-    // 2
-    if(sx+BS < x &&
-       sy+BS < y ) {
-        [self drawControlPanelX:sx+2*BS Y:sy+2*BS];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"1.png"]];
-    }
-    // 3
-    if(sx+BS < x &&
-       sy-BS < y && y < sy+BS) {
-        [self drawControlPanelX:sx+2*BS Y:sy];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"2.png"]];
-    }
-    // 4
-    if(sx+BS < x &&
-       y < sy-BS) {
-        [self drawControlPanelX:sx+2*BS Y:sy-2*BS];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"3.png"]];
-    }
-    // 5
-    if(sx-BS < x && x < sx+BS &&
-       y < sy-BS) {
-        [self drawControlPanelX:sx Y:sy-2*BS];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"5.png"]];
-    }
-    // 6
-    if(x < sx-BS &&
-       y < sy-BS) {
-        [self drawControlPanelX:sx-2*BS Y:sy-2*BS];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"8.png"]];
-    }
-    // 7
-    if(x < sx-BS &&
-       sy-BS < y && y < sy+BS) {
-        [self drawControlPanelX:sx-2*BS Y:sy];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"13.png"]];
-    }
-    // 8
-    if(x < sx-BS &&
-       sy+BS < y ) {
-        [self drawControlPanelX:sx-2*BS Y:sy+2*BS];
-        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"question.png"]];
+    
+    if(self.touchState == BEFORE_STATE) {
+        if(sx-BS < x && x < sx+BS &&
+           sy+BS < y ) {
+            [self drawControlPanelX:sx Y:sy+2*BS];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"half.png"]];
+            self.selectedPanel = PANEL_HALF;
+        }
+        if(sx+BS < x &&
+           sy+BS < y ) {
+            [self drawControlPanelX:sx+2*BS Y:sy+2*BS];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"1.png"]];
+            self.selectedPanel = PANEL_1;
+        }
+        if(sx+BS < x &&
+           sy-BS < y && y < sy+BS) {
+            [self drawControlPanelX:sx+2*BS Y:sy];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"2.png"]];
+            self.selectedPanel = PANEL_2;
+        }
+        if(sx+BS < x &&
+           y < sy-BS) {
+            [self drawControlPanelX:sx+2*BS Y:sy-2*BS];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"3.png"]];
+            self.selectedPanel = PANEL_3;
+        }
+        if(sx-BS < x && x < sx+BS &&
+           y < sy-BS) {
+            [self drawControlPanelX:sx Y:sy-2*BS];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"5.png"]];
+            self.selectedPanel = PANEL_5;
+        }
+        if(x < sx-BS &&
+           y < sy-BS) {
+            [self drawControlPanelX:sx-2*BS Y:sy-2*BS];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"8.png"]];
+            self.selectedPanel = PANEL_8;
+        }
+        if(x < sx-BS &&
+           sy-BS < y && y < sy+BS) {
+            [self drawControlPanelX:sx-2*BS Y:sy];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"13.png"]];
+            self.selectedPanel = PANEL_13;
+        }
+        if(x < sx-BS &&
+           sy+BS < y ) {
+            [self drawControlPanelX:sx-2*BS Y:sy+2*BS];
+            [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"question.png"]];
+            self.selectedPanel = PANEL_QUESTION;
+        }
+        return;
     }
 }
 
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [self drawControlPanelX:-200 Y:-200];
+    
+    if(self.touchState == BEFORE_STATE) {
+        self.touchState = READY_STATE;
+        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"omote_red.png"]];
+        return;
+    }
+    
+    if(self.touchState == READY_STATE) {
+        switch(self.selectedPanel) {
+            case PANEL_HALF:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"half.png"]];
+                break;
+            case PANEL_1:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"1.png"]];
+                break;
+            case PANEL_2:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"2.png"]];
+                break;
+            case PANEL_3:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"3.png"]];
+                break;
+            case PANEL_5:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"5.png"]];
+                break;
+            case PANEL_8:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"8.png"]];
+                break;
+            case PANEL_13:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"13.png"]];
+                break;
+            case PANEL_QUESTION:
+                [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"question.png"]];
+                break;
+        }
+        self.touchState = AFTER_STATE;
+        return;
+    }
+    if(self.touchState == AFTER_STATE) {
+        [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"omote_blue.png"]];
+        self.touchState = BEFORE_STATE;
+        return;
+    }
 }
 
 - (void)nextStateX:(NSInteger)offX Y:(NSInteger)offY{
