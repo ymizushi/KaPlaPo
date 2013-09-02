@@ -179,10 +179,11 @@
 }
 
 - (void) initControlPanel {
-    CGPoint square[] = {{-BS,-BS}, {BS,-BS}, {BS,BS}, {-BS, BS}};
-    ccColor4F green = {0, 1, 0, 1};
+    CGPoint circle[] = {{0,0}, {1,0}};
+    ccColor4F panelColor = {0.7f, 0.0f, 0.0f, 0.4f};
     
-    [self.controlPanelNode drawPolyWithVerts:square count:4 fillColor:green borderWidth:2 borderColor:green];
+//    [self.controlPanelNode drawPolyWithVerts:square count:4 fillColor:panelColor borderWidth:2 borderColor:panelColor];
+    [self.controlPanelNode drawSegmentFrom:circle[0] to:circle[1] radius:BS color:panelColor];
     self.controlPanelNode.position = ccp(-200, -200);
     [self addChild:self.controlPanelNode];
 }
