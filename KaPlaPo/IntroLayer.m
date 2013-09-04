@@ -79,53 +79,43 @@
     int y = location.y;
     int sx = self.startTouchPoint.x;
     int sy = self.startTouchPoint.y;
+    double dx = x-sx;
+    double dy = y-sy;
+    double r = 60;
+    double theta = atan2(dy,dx);
+    double radian = theta*180/M_PI;
     
     if(self.touchState == BEFORE_STATE) {
-        if(sx-BS < x && x < sx+BS &&
-           sy+BS < y ) {
-            [self drawControlPanelX:sx Y:sy+2*BS];
+        [self drawControlPanelX:sx+r*cos(theta) Y:sy+r*sin(theta)];
+        if(0<radian && radian <= 45) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"half.png"]];
             self.selectedPanel = PANEL_HALF;
         }
-        if(sx+BS < x &&
-           sy+BS < y ) {
-            [self drawControlPanelX:sx+2*BS Y:sy+2*BS];
+        if(45<radian && radian <= 90) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"1.png"]];
             self.selectedPanel = PANEL_1;
         }
-        if(sx+BS < x &&
-           sy-BS < y && y < sy+BS) {
-            [self drawControlPanelX:sx+2*BS Y:sy];
+        if(90<radian && radian <= 135) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"2.png"]];
             self.selectedPanel = PANEL_2;
         }
-        if(sx+BS < x &&
-           y < sy-BS) {
-            [self drawControlPanelX:sx+2*BS Y:sy-2*BS];
+        if(135<radian && radian <= 180) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"3.png"]];
             self.selectedPanel = PANEL_3;
         }
-        if(sx-BS < x && x < sx+BS &&
-           y < sy-BS) {
-            [self drawControlPanelX:sx Y:sy-2*BS];
+        if(-180<radian && radian <= -135) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"5.png"]];
             self.selectedPanel = PANEL_5;
         }
-        if(x < sx-BS &&
-           y < sy-BS) {
-            [self drawControlPanelX:sx-2*BS Y:sy-2*BS];
+        if(-135<radian && radian <= -90) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"8.png"]];
             self.selectedPanel = PANEL_8;
         }
-        if(x < sx-BS &&
-           sy-BS < y && y < sy+BS) {
-            [self drawControlPanelX:sx-2*BS Y:sy];
+        if(-90<radian && radian<=-45) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"13.png"]];
             self.selectedPanel = PANEL_13;
         }
-        if(x < sx-BS &&
-           sy+BS < y ) {
-            [self drawControlPanelX:sx-2*BS Y:sy+2*BS];
+        if(-45<radian && radian<=-0) {
             [displaySprite setTexture:[[CCTextureCache sharedTextureCache] addImage: @"question.png"]];
             self.selectedPanel = PANEL_QUESTION;
         }
@@ -185,7 +175,7 @@
     ccColor4F panelColor = {0.7f, 0.0f, 0.0f, 0.4f};
     
 //    [self.controlPanelNode drawPolyWithVerts:square count:4 fillColor:panelColor borderWidth:2 borderColor:panelColor];
-    [self.controlPanelNode drawSegmentFrom:circle[0] to:circle[1] radius:BS color:panelColor];
+    [self.controlPanelNode drawSegmentFrom:circle[0] to:circle[1] radius:BS*1.5 color:panelColor];
     self.controlPanelNode.position = ccp(-200, -200);
     [self addChild:self.controlPanelNode];
 }
